@@ -1,6 +1,8 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+// Left userPassword as a blank string because it will change as password is generated
 var userPassword = "";
+// Variable index is open-ended which helps with the randomness necessary for particular assignment
 var index ; 
 
 
