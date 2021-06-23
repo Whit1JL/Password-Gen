@@ -5,14 +5,19 @@ var userPassword = "";
 // Variable index is open-ended which helps with the randomness necessary for particular assignment
 var index;
 
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
-var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-var numeric = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-var special = ["!", "@", "#", "$", "&", "*", "^"]
+// Write password to the #password input
+function writePassword() {
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+
+    passwordText.value = password;
+}
 
 //write function that generates possible choices
-function getChoices() {
+function generatePassword() {
     var length = parseInt(prompt("How many characters would you like for password? Choose between 8 or 128 characters."));
 
     //validate user input 
@@ -23,6 +28,11 @@ function getChoices() {
     if (length < 8 || length > 128) {
         alert("Not acceptable");
     }
+
+var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var numeric = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+var special = ["!", "@", "#", "$", "&", "*", "^"];
 
     // Utilize confirm prompt to have user choose if they want to use certain characters or not
     var useUppercase = confirm("Click okay if you want to use uppercase letters");
@@ -71,8 +81,7 @@ while (userPassword.length <= length) {
 
 
 console.log(userPassword);
-return userPassword;
-
+// return userPassword;
 
 
 // write a function that generates the password 
@@ -99,15 +108,3 @@ function generatePassword() {
 // }
 // return ___________; 
 
-
-// Write password to the #password input
-function writePassword() {
-    var password = generatePassword();
-    var passwordText = document.querySelector("#password");
-
-    passwordText.value = password;
-
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
