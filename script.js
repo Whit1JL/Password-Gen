@@ -16,8 +16,14 @@ function writePassword() {
     passwordText.value = password;
 }
 
-//write function that generates possible choices
+// write a function that generates the password 
 function generatePassword() {
+    var preferences = getChoices();
+    console.log(preferences);
+}
+
+//write function that generates possible choices
+function getChoices() {
     var length = parseInt(prompt("How many characters would you like for password? Choose between 8 or 128 characters."));
 
     //validate user input 
@@ -83,12 +89,6 @@ while (userPassword.length <= length) {
 console.log(userPassword);
 // return userPassword;
 
-
-// write a function that generates the password 
-function generatePassword() {
-    var preferences = getChoices();
-    console.log(preferences);
-}
 
 
 
