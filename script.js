@@ -35,10 +35,10 @@ function getChoices() {
         alert("Not acceptable");
     }
 
-    var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-    var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    var numeric = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-    var special = ["!", "@", "#", "$", "&", "*", "^"];
+    var useUppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+    var useLowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    var useNumeric = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+    var useSpec = ["!", "@", "#", "$", "&", "*", "^"];
 
     // Utilize confirm prompt to have user choose if they want to use certain characters or not
     var useUppercase = confirm("Click okay if you want to use uppercase letters");
@@ -53,16 +53,16 @@ function getChoices() {
     // store user options in object
 
     var userOptions = {
-        length,
-        useUppercase,
-        useLowercase,
-        useNumeric,
-        useSpec,
+        length: length,
+        useUppercase: useUppercase,
+        useLowercase: useLowercase,
+        useNumeric: useNumeric,
+        useSpec: useSpec,
     }
 
     console.log(userOptions);
-    //return userOptions; instead of return call other func
-     coolPass(userOptions);
+    //return userOptions
+     return(userOptions);
 }
 
 // validate user input ... at least 1 of those has to be true for conditional
@@ -72,7 +72,7 @@ function coolPass(userOptions) {
     console.log(userOptions);
     while (userPassword.length <= length) {
         if (useUppercase) {
-            index = indexRandom(uppercase.length);
+            index = indexRandom(useUppercase.length);
             userPassword = userPassword + uppercase[index];
         }
         if (useLowercase) {
@@ -93,7 +93,7 @@ function coolPass(userOptions) {
 
 console.log(userPassword);
 
-return userPassword;
+// return userPassword;
 
 // build password of specified number of characters (Rich's example)
 // for(let x = 0; x < numCharacters; x++) {
