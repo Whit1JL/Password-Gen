@@ -16,7 +16,8 @@ generateBtn.addEventListener("click", writePassword);
 
 //write function that generates possible choices
 function getChoices() {
-    var length = parseInt(prompt("How many characters would you like for password? Choose between 8 or 128 characters."));
+    var numCharacters = parseInt(prompt("How many characters would you like for password? Choose between 8 or 128 characters."));
+console.log("num characters", numCharacters);
 
     //validate user input 
     if (Number.isNaN(length)) {
@@ -67,41 +68,46 @@ function generatePassword() {
     console.log(preferences);
 
     // console.log(userOptions);
-    while (userPassword.length <= length) {
-        if (preferences.useUppercase) {
+    var possibleCharacters = [];
+    while (numCharacters.length <= length) {
+        if (preferences.useUpperCase === true) {
             index = indexRandom(uppercase.length);
             userPassword = userPassword + uppercase[index];
         }
-        if (prefererences.useLowercase) {
+        if (preferences.useLowercase === true) {
             index = indexRandom(lowercase.length);
             userPassword = userPassword + lowercase[index];
         }
-        if (preferences.useNumeric) {
+        if (preferences.useNumeric === true) {
             index = indexRandom(numeric.length);
             userPassword = userPassword + numeric[index];
         }
-        if (preferences.useSpec) {
+        if (preferences.useSpec === true) {
             index = indexRandom(special.length);
             userPassword = userPassword + special[index];
         }
     }
-console.log("hello", userPassword); 
+    console.log("hello", userPassword);
 
-return userPassword;
+        //push the upperCase global variable values into the possibleCharacters array
+
+    let availableCharacters = [""]
+    let password = "";
+
+    // var password = "";
+    for (let i = 0; i < numCharacters; i++) {
+        // select random character from availableCharacter
+        let = randomCharacter = availableCharacters[Math.floor(Math.random() * availableCharacters.length)];
+            console.log("Random Character", randomCharacter);
+        password = password + availableCharacters[0];
+}
+    return password;
 }
 
 // build password of specified number of characters (Rich's example)
 // for(let x = 0; x < numCharacters; x++) {
-// let randomCharacter = availableCharacters[Math.floor(Math.random() * availableCharacters.length)];
+// let randomCharacter = availableCharacters[Math.
 // console.log("Random Character", randomCharacter);
 // password = password + availableCharacters[0];
 // }
 // return password; 
-
-// my version... 
-// for(let i = 0; i < length; i++) {
-//     let ____ = userOptions[Math.floor(Math.random() * userOptions.length)];
-//     console.log("________", ____);
-//     password = password + userOptions[0];
-// }
-// return ___________; 
