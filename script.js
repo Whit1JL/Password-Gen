@@ -3,7 +3,7 @@ var generateBtn = document.querySelector("#generate");
 // Left userPassword as a blank string because it will change as password is generated
 var userPassword = "";
 // Variable index is open-ended which helps with the randomness necessary for particular assignment
-var index;
+var index ;
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
@@ -35,10 +35,10 @@ function getChoices() {
         alert("Not acceptable");
     }
 
-var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var numeric = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-var special = ["!", "@", "#", "$", "&", "*", "^"];
+    var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+    var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    var numeric = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+    var special = ["!", "@", "#", "$", "&", "*", "^"];
 
     // Utilize confirm prompt to have user choose if they want to use certain characters or not
     var useUppercase = confirm("Click okay if you want to use uppercase letters");
@@ -50,7 +50,7 @@ var special = ["!", "@", "#", "$", "&", "*", "^"];
     var useSpec = confirm("Click okay if you want to use special characters");
     console.log(useSpec);
 
-    // store user options
+    // store user options in object
 
     var userOptions = {
         length,
@@ -59,39 +59,41 @@ var special = ["!", "@", "#", "$", "&", "*", "^"];
         useNumeric,
         useSpec,
     }
+
     console.log(userOptions);
-    return userOptions;
+    //return userOptions; instead of return call other func
+     coolPass(userOptions);
 }
 
 // validate user input ... at least 1 of those has to be true for conditional
 // best option is to use a while loop
 
-while (userPassword.length <= length) {
-    if (useUppercase) {
-        index = indexRandom(uppercase.length);
-        userPassword = userPassword + uppercase[index];
-    }
-    if (useLowercase) {
-        index = indexRandom(lowercase.length);
-        userPassword = userPassword + lowercase[index];
-    }
-    if (useNumeric) {
-        index = indexRandom(numeric.length);
-        userPassword = userPassword + numeric[index];
-    }
-    if (useSpec) {
-        index = indexRandom(special.length);
-        userPassword = userPassword + special[index];
+function coolPass(userOptions) {
+    console.log(userOptions);
+    while (userPassword.length <= length) {
+        if (useUppercase) {
+            index = indexRandom(uppercase.length);
+            userPassword = userPassword + uppercase[index];
+        }
+        if (useLowercase) {
+            index = indexRandom(lowercase.length);
+            userPassword = userPassword + lowercase[index];
+        }
+        if (useNumeric) {
+            index = indexRandom(numeric.length);
+            userPassword = userPassword + numeric[index];
+        }
+        if (useSpec) {
+            index = indexRandom(special.length);
+            userPassword = userPassword + special[index];
+        }
     }
 }
 
 
 console.log(userPassword);
-// return userPassword;
 
-
-
-
+return userPassword;
 
 // build password of specified number of characters (Rich's example)
 // for(let x = 0; x < numCharacters; x++) {
@@ -107,4 +109,3 @@ console.log(userPassword);
 //     password = password + userOptions[0];
 // }
 // return ___________; 
-
