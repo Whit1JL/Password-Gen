@@ -22,6 +22,7 @@ function getChoices() {
         alert("Not acceptable");
     }
     
+    // Utilize confirm prompt to have user choose if they want to use certain characters or not
     var useUppercase = confirm("Click okay if you want to use uppercase letters");
     console.log(useUppercase);
     var useLowercase = confirm("Click okay if you want to use lowercase letters");
