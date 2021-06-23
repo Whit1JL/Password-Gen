@@ -6,51 +6,13 @@ var userPassword = "";
 var index;
 
 // arrays 
-var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var numeric = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-var special = ["!", "@", "#", "$", "&", "*", "^"];
+const uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+const lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+const numeric = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+const special = ["!", "@", "#", "$", "&", "*", "^"];
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-// Write password to the #password input
-function writePassword() {
-    var password = generatePassword();
-    var passwordText = document.querySelector("#password");
-
-    passwordText.value = password;
-}
-
-// write a function that generates the password 
-function generatePassword() {
-    var preferences = getChoices();
-    console.log(preferences);
-
-    console.log(userOptions);
-    while (userPassword.length <= length) {
-        if (preferences.useUppercase) {
-            index = indexRandom(uppercase.length);
-            userPassword = userPassword + uppercase[index];
-        }
-        if (prefererences.useLowercase) {
-            index = indexRandom(lowercase.length);
-            userPassword = userPassword + lowercase[index];
-        }
-        if (preferences.useNumeric) {
-            index = indexRandom(numeric.length);
-            userPassword = userPassword + numeric[index];
-        }
-        if (preferences.useSpec) {
-            index = indexRandom(special.length);
-            userPassword = userPassword + special[index];
-        }
-    }
-console.log("hello", userPassword); 
-
-return userPassword;
-}
-
 
 //write function that generates possible choices
 function getChoices() {
@@ -89,6 +51,43 @@ function getChoices() {
     console.log(userOptions);
     //return userOptions
     return (userOptions);
+}
+
+// Write password to the #password input
+function writePassword() {
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+
+    passwordText.value = password;
+}
+
+// write a function that generates the password 
+function generatePassword() {
+    var preferences = getChoices();
+    console.log(preferences);
+
+    // console.log(userOptions);
+    while (userPassword.length <= length) {
+        if (preferences.useUppercase) {
+            index = indexRandom(uppercase.length);
+            userPassword = userPassword + uppercase[index];
+        }
+        if (prefererences.useLowercase) {
+            index = indexRandom(lowercase.length);
+            userPassword = userPassword + lowercase[index];
+        }
+        if (preferences.useNumeric) {
+            index = indexRandom(numeric.length);
+            userPassword = userPassword + numeric[index];
+        }
+        if (preferences.useSpec) {
+            index = indexRandom(special.length);
+            userPassword = userPassword + special[index];
+        }
+    }
+console.log("hello", userPassword); 
+
+return userPassword;
 }
 
 // build password of specified number of characters (Rich's example)
