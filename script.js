@@ -34,8 +34,7 @@ function getChoices() {
     var useSpec = confirm("Click okay if you want to use special characters");
     console.log(useSpec);
  
-    //validate user input ... at least 1 of those has to be true for conditional
-    // store user options into object 
+    // store user options
 
     var userOptions = {
         length, 
@@ -46,6 +45,28 @@ function getChoices() {
     }
     console.log(userOptions);
     return userOptions;
+}
+
+// validate user input ... at least 1 of those has to be true for conditional
+// best option is to use a while loop
+
+while(userPassword.length <= length) {
+    if(useUppercase) {
+        index = indexRandom(uppercase.length);
+        userPassword = userPassword + uppercase[index];
+    }
+    if(useLowercase) {
+        index = indexRandom(lowercase.length); 
+        userPassword = userPassword + lowercase[index];    
+    }
+    if(useNumeric) {
+        index = indexRandom(numeric.length);
+        userPassword = userPassword + numeric[index];
+    }
+    if(useSpec) {
+        index = indexRandom(special.length);
+        userPassword = userPassword + special[index];
+    }
 }
 
 // write a function that generates the password 
