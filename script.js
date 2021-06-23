@@ -3,7 +3,7 @@ var generateBtn = document.querySelector("#generate");
 // Left userPassword as a blank string because it will change as password is generated
 var userPassword = "";
 // Variable index is open-ended which helps with the randomness necessary for particular assignment
-var index ;
+var index;
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
@@ -62,7 +62,7 @@ function getChoices() {
 
     console.log(userOptions);
     //return userOptions
-     return(userOptions);
+    return (userOptions);
 }
 
 // validate user input ... at least 1 of those has to be true for conditional
@@ -72,7 +72,7 @@ function coolPass(userOptions) {
     console.log(userOptions);
     while (userPassword.length <= length) {
         if (useUppercase) {
-            index = indexRandom(useUppercase.length);
+            index = indexRandom(uppercase.length);
             userPassword = userPassword + uppercase[index];
         }
         if (useLowercase) {
@@ -88,12 +88,11 @@ function coolPass(userOptions) {
             userPassword = userPassword + special[index];
         }
     }
-}
-
-
 console.log(userPassword);
 
-// return userPassword;
+return userPassword;
+}
+
 
 // build password of specified number of characters (Rich's example)
 // for(let x = 0; x < numCharacters; x++) {
