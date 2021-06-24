@@ -1,44 +1,34 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-// Left userPassword as a blank string because it will change as password is generated
-var userPassword = "";
 // numCharacters is new variable instead of "length"
-var numCharacters = "";
+var numCharacters = parseInt(numCharacters);
 // Variable index is open-ended which helps with the randomness necessary for particular assignment
 var index;
-
 // arrays 
 const uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 const lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 const numeric = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 const special = ["!", "@", "#", "$", "&", "*", "^"];
-
 // Write password to the #password input
 function writePassword() {
-    var password = generatePassword();
+    var password = getChoices();
     var passwordText = document.querySelector("#password");
-
     passwordText.value = password;
 }
-
 //write function that generates possible choices
 function getChoices() {
-    var numCharacters = parseInt(prompt("How many characters would you like for password? Choose between 8 or 128 characters."));
+    var numCharacters = prompt("How many characters would you like for password? Choose between 8 and 128 characters.");
     console.log("num characters", numCharacters);
-
     //validate user input 
-    if (Number.isNaN(length)) {
+    if (Number.isNaN(numCharacters)) {
         alert("That's not a number");
     }
-
-    if (length < 8 || length > 128) {
+    if (numCharacters < 8 || numCharacters > 128) {
         alert("Not acceptable");
+        var numCharacters = prompt("How many characters would you like for password? Choose between 8 and 128 characters.");
     }
-
     // Utilize confirm prompt to have user choose if they want to use certain characters or not
     var useUppercase = confirm("Click okay if you want to use uppercase letters");
     console.log(useUppercase);
@@ -48,58 +38,31 @@ function getChoices() {
     console.log(useNumeric);
     var useSpec = confirm("Click okay if you want to use special characters");
     console.log(useSpec);
-
-    // store user options in object
-    var userOptions = {
-        length: length,
-        useUppercase: useUppercase,
-        useLowercase: useLowercase,
-        useNumeric: useNumeric,
-        useSpec: useSpec,
-    }
-
-    console.log(userOptions);
-
-    return (userOptions);
-}
-
-// write a function that generates the password 
-function generatePassword() {
-
-    var preferences = getChoices();
-    console.log(preferences);
-
-    var possibleCharacters = [];
-    while (userPassword.length <= length) {
-        if (preferences.uppercase === true) {
-            index = indexRandom(uppercase.length);
-            userPassword = userPassword + uppercase[index];
+    // Left userPassword as a blank string because it will change as password is generated
+    var password = ''
+    //while the length is correct, if the user clicks yes to lowercase, uppercase, numberic or special it will math.random the length of the array and set the new user password
+    while (password.length <= numCharacters) {
+        if (useLowercase) {
+            index = indexRandom(lowercase.length)
+            password = password + lowercase[index]
         }
-        if (preferences.lowercase === true) {
-            index = indexRandom(lowercase.length);
-            userPassword = userPassword + lowercase[index];
+        if (useUppercase) {
+            index = indexRandom(uppercase.length)
+            password = password + uppercase[index]
         }
-        if (preferences.numeric === true) {
-            index = indexRandom(numeric.length);
-            userPassword = userPassword + numeric[index];
+        if (useNumeric) {
+            index = indexRandom(numeric.length)
+            password = password + numeric[index]
         }
-        if (preferences.special === true) {
-            index = indexRandom(special.length);
-            userPassword = userPassword + special[index];
+        if (useSpec) {
+            index = indexRandom(special.length)
+            password = password + special[index]
         }
     }
-    console.log("hello", possibleCharacters);
-
-}
-
-let availableCharacters = [];
-let password = "";
-
-for (let i = 0; i < numCharacters; i++) {
-    // select random character from availableCharacter
-    let randomCharacter = availableCharacters[Math.floor(Math.random() * availableCharacters.length)];
-    console.log("Random Character", randomCharacter);
-    password = password + availableCharacters[0];
-
+    //returning the new user password
     return password;
+}
+//function that randomizes the index of characters
+function indexRandom(max) {
+    return Math.floor(Math.random() * max);
 }
